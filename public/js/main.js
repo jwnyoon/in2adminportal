@@ -2,7 +2,7 @@
 //init
     window.fbAsyncInit = function() {
     FB.init({
-      appId      : '860215777432421',
+      appId      : '992576814114726',
       xfbml      : true,
       version    : 'v2.5'
     });
@@ -63,10 +63,10 @@ function postToFacebookPage(page) {
 
         var params = {
             access_token : page.access_token,
-            message : "ahoy",
+            message : "merry christmas",
           
         };
-        FB.api('/1654321284855742/feed', 'post', params, function(response) {
+        FB.api('/198630340478851/feed', 'post', params, function(response) {
             if (!response || response.error) {
                 console.log(response.error);
             }
