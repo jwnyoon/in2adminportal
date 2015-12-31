@@ -9,13 +9,16 @@
 
     FB.getLoginStatus(function(response){
       if(response.status === 'connected'){
-        console.log("Connected");
+        console.log("You are already connected");
         console.log(response);
              page = response;
-            postToFacebookPage(page);
+             console.log(page.access_token);
+            // postToFacebookPage(page);
+            DoSubmit();
 
       } else{
-        Login();
+        console.log("Let's log in");
+        DoSubmit();
       }
 
 
@@ -32,10 +35,8 @@
    }(document, 'script', 'facebook-jssdk'));
 
 
-
-
 // //login
-function Login()
+function DoSubmit()
 {
    FB.login(function(response) {
             FB.api('/me/accounts', function(response){
@@ -45,8 +46,9 @@ function Login()
                 }
                 else {
                     page = response.data[0];
-                    postToFacebookPage(page);
-                    console.log(page);
+                    // postToFacebookPage(page);
+                    getMessage(page);
+                    console.log(page.access_token);
 
                 }
             });
@@ -58,12 +60,30 @@ function Login()
 }
 
 
+
+function getMessage(page){
+  var message = $( "input:first" ).val();
+  console.log(message);
+  console.log(page.access_token);
+// });
+  if(message === null){
+      alert("write something");
+}
+  else{
+      postToFacebookPage(page,message);
+  }    
+
+
+
+}
+
+
   
-function postToFacebookPage(page) {
+function postToFacebookPage(page,message) {
 
         var params = {
             access_token : page.access_token,
-            message : "merry christmas",
+            message : message,
           
         };
         FB.api('/198630340478851/feed', 'post', params, function(response) {
