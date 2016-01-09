@@ -60,17 +60,70 @@ function DoSubmit()
 }
 
 
+function getSongList(){
+  var song1 = $("#song1").val();
+  var link1 = $("#link1").val();
+
+  var song2 = $("#song2").val();
+  var link2 = $("#link2").val();
+
+  var song3 = $("#song3").val();
+  var link3 = $("#link3").val();
+
+  var song4 = $("#song4").val();
+  var link4 = $("#link4").val();
+
+  // var songlist = [];
+  // for (var i = 0; i < 3; i++){
+  //   songlist.push(song)
+  // }
+
+  var songlist = song1 + "\n" + link1 + "\n" + "\n" + song2 + "\n" + link2 + "\n" + "\n"+song3 + "\n" + link3 + "\n" + "\n"+ song4 + "\n" + link4;
+  console.log(songlist);
+  return songlist;
+}
+
+
+function addCategoryTitle(){
+  var category = getCategoryTitle();
+  if (category == "etc"){
+    console.log("category is etc");
+    var categoryTitle = $("#titletext").val();
+            console.log("categorytitle:"+ categoryTitle); 
+        return categoryTitle;
+
+  }
+
+  else{
+    var categoryTitle = category;  
+    return categoryTitle;
+         console.log("categorytitle:"+ categoryTitle); 
+  }
+
+}
+
+function getCategoryTitle(){
+    var category= $('#mydropdown').val();
+    console.log("I got categorytitle"+category);
+    return category; 
+}
+
 
 function getMessage(page){
-  var message = $( "input:first" ).val();
+  // var message = document.getElementById('bodytext');
+  var songlist = getSongList();
+  var message = $( "#bodytext" ).val();
   console.log(message);
   console.log(page.access_token);
+  var categoryTitle = addCategoryTitle();
+  console.log(categoryTitle);
+  var content = '['+categoryTitle+']'+' '+message+"\n"+songlist;
 // });
-  if(message === null){
+  if(content === null){
       alert("write something");
 }
   else{
-      postToFacebookPage(page,message);
+      postToFacebookPage(page,content);
   }    
 
 
@@ -79,11 +132,11 @@ function getMessage(page){
 
 
   
-function postToFacebookPage(page,message) {
+function postToFacebookPage(page,content) {
 
         var params = {
             access_token : page.access_token,
-            message : message,
+            message : content,
           
         };
         FB.api('/198630340478851/feed', 'post', params, function(response) {
@@ -96,5 +149,7 @@ function postToFacebookPage(page,message) {
             }
 
         });
+        $('form :input').val("");
+        $('input:submit').val("submit");
     };
 

@@ -6,14 +6,73 @@
 </head>
 
 <body>
+	In2 Admin Portal
 	<script src="js/main.js"></script>
-	<form action="javascript:alert('success!');">
+
+<!-- 	<form action="javascript:alert('success!');">
 		<div>
 	 <input type="text" id="text" size="40" value=""/>
 	 <br>
     <input type="submit" value="submit" onclick='DoSubmit()';/>
     	</div>
-    </form>	
+    </form>	 -->
+
+
+
+		<form>
+			<div>Select Category
+			<select id="mydropdown">
+				<option value="">Select</option>
+				<option value="category1">Category1</option>
+				<option value="worship">Praise</option>
+				<option value="etc">ETC</option>
+			</select>
+		</div>
+		</form>
+
+
+	<form id="title">
+		<div>Write Category<input type="text" id="titletext" size="40" value=""/></div>	
+	</form>	
+
+	<form id="textbox">
+		<div>write a post<input type="text" id="bodytext" size="40" value=""/></div>	
+	</form>	
+	<form id="image">
+		<div>
+			upload image
+		</div>
+	</form>
+
+	<form id="songlist">
+		<div>1. <input type="text" id="song1" size="40" value=""/>
+			<br>
+				<input type="text" id="link1" size="40" value=""/>
+		</div>
+		
+		<div>2. <input type="text" id="song2" size="40" value=""/>
+			<br>
+				<input type="text" id="link2" size="40" value=""/>
+		</div>
+		
+		<div>3. <input type="text" id="song3" size="40" value=""/>
+			<br>
+				<input type="text" id="link3" size="40" value=""/>
+		</div>
+
+		<div>4. <input type="text" id="song4" size="40" value=""/>
+			<br>
+				<input type="text" id="link4" size="40" value=""/>
+			</div>
+	</form>	
+
+	<form action="javascript:alert('Submission Complited');">
+		<div><input type="submit" value="submit" onclick='DoSubmit()';/></div>
+</form>
+			
+	<script src="js/viz.js"></script>
+
+
 
 </body>
 
